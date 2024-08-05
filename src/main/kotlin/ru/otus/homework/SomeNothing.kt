@@ -1,14 +1,13 @@
+@file:Suppress("UNREACHABLE_CODE")
+
 package ru.otus.homework
 
 fun main() {
-    val a: String = badStringFun()
-    val b: Int = badIntFun()
+    val a: String = badFun()
+    val b: Int = badFun()
+    val c: MyInt = badFun()
 }
 
-fun badStringFun(): String {
-    throw Exception("I'm a bad string function")
-}
-
-fun badIntFun(): Int {
-    throw Exception("I'm a bad int function")
+fun badFun(): Nothing {
+    throw Exception("I'm a bad function")
 }
