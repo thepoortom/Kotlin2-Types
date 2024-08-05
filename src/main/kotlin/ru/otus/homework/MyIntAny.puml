@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+class Any {
+    +equals(other: Any?): Boolean
+    +hashCode(): Int
+    +toString(): String
+}
+note right of Any::equals
+Сравнивает два объекта
+end note
+
+class MyInt{
+    +value: Int
+    --
+    +plus(other: MyInt): MyInt
+    --
+    +toDouble(): Double
+    +toLong(): Long
+    --
+    +equals(other: Any?): Boolean
+    +hashCode(): Int
+    +toString(): String
+    --
+    {static} +MIN_VALUE: MyInt
+    {static} +MAX_VALUE: MyInt
+}
+note right of MyInt::equals
+Переопределенный метод
+end note
+
+Any <|-down- MyInt
+
+@enduml
