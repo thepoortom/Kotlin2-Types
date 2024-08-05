@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MyInt {
+    +value: Int
+    --
+    +plus(other: MyInt): MyInt
+    --
+    +toDouble(): Double
+    +toLong(): Long
+    --
+    +equals(other: Any?): Boolean
+    +hashCode(): Int
+    +toString(): String
+    --
+    {static} +MIN_VALUE: MyInt
+    {static} +MAX_VALUE: MyInt
+}
+note left of MyInt::value
+Значение. Целое число
+end note
+note left of MyInt::MIN_VALUE
+Минимальное значение
+("статическое" поле)
+end note
+note left of MyInt::MAX_VALUE
+Максимальное значение
+("статическое" поле)
+end note
+note right of MyInt::plus
+Складывает два объекта (оператор)
+end note
+note right of MyInt::toDouble
+Преобразует в число двойной точности
+end note
+note right of MyInt::toLong
+Преобразует в большое число
+end note
+note right of MyInt::equals
+Сравнивает два объекта
+end note
+
+@enduml
