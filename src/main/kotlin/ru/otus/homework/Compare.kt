@@ -16,15 +16,9 @@ fun main() {
 
 class SomeClass(val a: Int, val b: Int) {
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as SomeClass
-
-        if (a != other.a) return false
-        if (b != other.b) return false
-
-        return true
+        println("Running equals")
+        val otherSomeClass = other as? SomeClass ?: return false
+        return a == otherSomeClass.a && b == otherSomeClass.b
     }
 
     override fun hashCode(): Int {
