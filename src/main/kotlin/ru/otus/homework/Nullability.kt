@@ -3,9 +3,22 @@
 package ru.otus.homework
 
 fun main() {
-    val str1: String = "Hello, World!"
-    val str2: String? = null
+    printIfNotNull(null)
+    printDefaultIfNull(null)
+    throwIfNull(null)
+}
 
-    println(str1.length.plus(1).minus(1)) // 13
-    println(str2?.length?.plus(1)?.minus(1)) // null
+fun printIfNotNull(str: String?) {
+    val nonNull = str ?: return
+    println(nonNull)
+}
+
+fun printDefaultIfNull(str: String?) {
+    val nonNull = str ?: "Default"
+    println(nonNull)
+}
+
+fun throwIfNull(str: String?) {
+    val nonNull = str ?: throw IllegalStateException("String must not be null")
+    println(nonNull)
 }
