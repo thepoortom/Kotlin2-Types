@@ -12,6 +12,10 @@ fun main() {
     demo1.print()
 
     println(demo1.timesCalled)
+
+    val demo3 = demo1 + demo2
+    val (prefix, value, postfix) = demo3
+    println("Prefix: $prefix, value: $value, postfix: $postfix")
 }
 
 // В скобках после имени класса указывается конструктор, который принимает строку
@@ -54,4 +58,15 @@ class Demo(value: String) : Any() {
         timesCalled++
         println("$prefix $value, first char: $firstChar, last char: ${lastChar()}, postfix: $postfix")
     }
+
+    // Оператор 'plus' для сложения двух объектов класса Demo
+    operator fun plus(other: Demo): Demo = Demo(value + " " + other.value).apply {
+        prefix = this@Demo._prefix
+        postfix = this@Demo.postfix
+    }
+
+    // Оператор 'componentX' для деструктуризации объекта класса Demo
+    operator fun component1(): String = _prefix
+    operator fun component2(): String = value
+    operator fun component3(): String = postfix
 }
