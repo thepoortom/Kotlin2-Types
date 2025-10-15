@@ -6,19 +6,15 @@ fun main() {
     val stringBox = LabeledBox("Strings", "Hello, World!")
     val intBox = LabeledBox("Ints", 100500)
 
-    printStringBoxLabel(stringBox)
-    printIntBoxLabel(intBox)
+    printBoxLabel(stringBox)
+    printBoxLabel(intBox)
 }
 
 private class LabeledBox<T>(val label: String, private val value: T) {
     fun getValue(): T = value
 }
 
-private fun printStringBoxLabel(box: LabeledBox<String>) {
-    println(box.label)
-}
-
-private fun printIntBoxLabel(box: LabeledBox<Int>) {
+private fun printBoxLabel(box: LabeledBox<*>) {
     println(box.label)
 }
 
