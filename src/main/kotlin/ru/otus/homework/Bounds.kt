@@ -3,7 +3,7 @@
 package ru.otus.homework
 
 fun main() {
-    class Box<T>(private val value: T) {
+    class Box<T : CharSequence?>(private val value: T) {
         fun getValue(): T = value
     }
 
