@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+class Shape {
+    +draw()
+}
+
+class Circle {
+    +radius: Int
+}
+Circle -up-|> Shape: sub-type
+
+class "Covariance<Shape>" as cvs {
+    fun produce(): Shape
+}
+cvs -> Shape: produce
+cvs -> Circle: produce
+
+class "Covariance<Circle>" as cvc {
+    fun produce(): Circle
+}
+cvc -> Circle: produce
+cvc -up-|> cvs: sub-type
+
+@enduml
