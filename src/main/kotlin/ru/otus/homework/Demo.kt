@@ -6,15 +6,10 @@ fun main() {
     val demo2 = Demo("World")
     println(demo2.value)
 
-    println(demo1.firstChar)
-
-    println(demo1.prefix)
+    demo1.print()
     demo1.prefix = "Начало"
-    println(demo1.prefix)
-
-    println(demo1.postfix)
     demo1.postfix = "Конец!"
-    println(demo1.postfix)
+    demo1.print()
 
     println(demo1.timesCalled)
 }
@@ -50,4 +45,13 @@ class Demo(value: String) : Any() {
     // Свойство. Доступно снаружи класса для чтения и изнутри - для записи
     var timesCalled: Int = 0
         private set
+
+    // Метод, доступный изнутри класса
+    private fun lastChar(): Char = value[value.length - 1]
+
+    // Метод, доступный извне класса
+    fun print() {
+        timesCalled++
+        println("$prefix $value, first char: $firstChar, last char: ${lastChar()}, postfix: $postfix")
+    }
 }
