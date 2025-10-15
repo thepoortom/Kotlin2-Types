@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+class Shape {
+    +draw()
+}
+
+class Circle {
+    +radius: Int
+}
+Circle -up-|> Shape: sub-type
+
+class "Contravariance<Circle>" as cvc {
+    fun design(shape: Circle)
+}
+cvc -> Circle: accepts
+
+class "Contravariance<Shape>" as cvs {
+    fun design(shape: Shape)
+}
+cvs -> Shape: accepts
+cvs -> Circle: accepts
+cvs -down-|> cvc: sub-type
+
+
+@enduml
