@@ -5,6 +5,18 @@ fun main() {
     println(demo1.value)
     val demo2 = Demo("World")
     println(demo2.value)
+
+    println(demo1.firstChar)
+
+    println(demo1.prefix)
+    demo1.prefix = "Начало"
+    println(demo1.prefix)
+
+    println(demo1.postfix)
+    demo1.postfix = "Конец!"
+    println(demo1.postfix)
+
+    println(demo1.timesCalled)
 }
 
 // В скобках после имени класса указывается конструктор, который принимает строку
@@ -20,4 +32,22 @@ class Demo(value: String) : Any() {
         // Инициализируем свойство value значением, переданным в конструктор
         this.value = value
     }
+
+    // Свойство. Доступно снаружи класса для чтения
+    val firstChar: Char = value[0]
+
+    // Свойство. Доступно снаружи класса для чтения и записи
+    var postfix: String = "Fin!"
+
+    // Cвойство. Доступно только изнутри класса
+    private var _prefix: String = "Value"
+    // Свойство c геттером и сеттером. Доступно снаружи класса для чтения и записи
+    // Используем свойство _prefix для хранения значения
+    var prefix: String
+        get() = "$_prefix:"
+        set(value) { _prefix = value.takeIf { it.isNotBlank() } ?: "Value"}
+
+    // Свойство. Доступно снаружи класса для чтения и изнутри - для записи
+    var timesCalled: Int = 0
+        private set
 }
