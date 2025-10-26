@@ -15,9 +15,9 @@ sealed class ApiException(message: String) : Throwable(message) {
     data object UnknownException: ApiException("Unknown exception")
 }
 
-class ErrorLogger<E : Throwable> {
+class ErrorLogger<in E : Throwable> {
 
-    val errors = mutableListOf<Pair<LocalDateTime, E>>()
+    val errors = mutableListOf<Pair<LocalDateTime, Throwable>>()
 
     fun log(response: NetworkResponse<*, E>) {
         if (response is Failure) {
